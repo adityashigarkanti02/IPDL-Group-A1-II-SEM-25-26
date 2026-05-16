@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant - Premium Smart Campus Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-glows">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+    </div>
+
+    <div class="app-container">
+        <header class="glass-panel main-header">
+            <div class="header-branding">
+                <div class="logo-wrapper">
+                    <span class="logo-icon">✨</span>
+                    <div class="logo-pulse"></div>
+                </div>
+                <div>
+                    <h1>AI Assistant</h1>
+                    <p class="subtitle">Next-Gen Predictive Campus Core</p>
+                </div>
+            </div>
+            <div class="system-status-container">
+                <div class="status-pill">
+                    <span class="pulse-indicator success"></span>
+                    <span>AI Engine Live</span>
+                </div>
+                <div class="status-pill core-load">
+                    <span class="pulse-indicator cyan"></span>
+                    <span>Database Connected</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="glass-panel student-profile-bar">
+            <div class="profile-main-meta">
+                <div class="profile-avatar-hexagon">⚡</div>
+                <div>
+                    <h2 id="student-name">Loading Profile...</h2>
+                    <p id="student-id" class="neon-id">ID: EXT-XXXX-XXXX</p>
+                </div>
+            </div>
+            <div class="profile-stat-grid">
+                <div class="stat-meta-box">
+                    <span class="meta-label">Department Stream</span>
+                    <span id="student-dept" class="meta-value">---</span>
+                </div>
+                <div class="stat-meta-box">
+                    <span class="meta-label">Timeline Status</span>
+                    <span id="student-sem" class="meta-value">---</span>
+                </div>
+                <div class="stat-meta-box">
+                    <span class="meta-label">Academic Year</span>
+                    <span id="student-year" class="meta-value">---</span>
+                </div>
+                <div class="stat-meta-box cgpa-glow-box">
+                    <span class="meta-label">Cumulative GPA</span>
+                    <span id="student-cgpa" class="meta-value text-gradient-cyan">0.00</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="dashboard-layout">
+            <div class="main-content-flow">
+                
+                <section class="glass-panel luxury-card analytics-hero">
+                    <div class="card-header">
+                        <span class="card-icon-badge cyan-glow">🎯</span>
+                        <div>
+                            <h2>Predictive Compliance Simulator</h2>
+                            <p class="card-sub">Interactive attendance forecasting optimization engine</p>
+                        </div>
+                    </div>
+                    
+                    <div class="simulator-grid">
+                        <div class="simulator-controls">
+                            <label for="target-threshold">Target Threshold: <span id="threshold-val">75%</span></label>
+                            <input type="range" id="target-threshold" min="50" max="100" value="75" class="luxury-slider">
+                            
+                            <div class="selector-wrapper">
+                                <label for="sim-subject-select">Select Course to Simulate:</label>
+                                <select id="sim-subject-select">
+                                    </select>
+                            </div>
+                        </div>
+                        
+                        <div class="simulator-display-panel">
+                            <div class="prediction-output-box">
+                                <h4 id="prediction-title">Analyzing Matrix...</h4>
+                                <div id="prediction-metric" class="metric-highlight">0</div>
+                                <p id="prediction-instruction">Select a subject to initialize predictive logic paths.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="two-column-subgrid">
+                    <section class="glass-panel luxury-card">
+                        <div class="card-header">
+                            <span class="card-icon-badge purple-glow">📊</span>
+                            <div>
+                                <h2>Academic Attendance Metrics</h2>
+                                <p class="card-sub">Real-time credit-weighted verification ledger</p>
+                            </div>
+                        </div>
+                        <div id="attendance-list" class="attendance-wrapper custom-scrollbar">
+                            </div>
+                    </section>
+
+                    <section class="glass-panel luxury-card">
+                        <div class="card-header">
+                            <span class="card-icon-badge amber-glow">🛠️</span>
+                            <div>
+                                <h2>Grievance Node Desk</h2>
+                                <p class="card-sub">Encrypted ticketing tracking gateway</p>
+                            </div>
+                        </div>
+                        <form id="complaint-form">
+                            <select id="comp-category" required>
+                                <option value="" disabled selected>Classification Category</option>
+                                <option value="Infrastructure">Infrastructure Operations</option>
+                                <option value="Hostel & Mess">Hostel & Mess Services</option>
+                                <option value="Academics">Academic Infrastructure</option>
+                            </select>
+                            <textarea id="comp-desc" placeholder="Provide descriptive breakdown of technical anomaly..." required></textarea>
+                            <button type="submit" class="btn-gradient-primary">Submit System Ticket</button>
+                        </form>
+                        <div class="ticket-history">
+                            <h3>Active System Log Tickets</h3>
+                            <div id="complaints-list" class="custom-scrollbar"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <aside class="side-chat-flow">
+                <section class="glass-panel luxury-card chatbot-card">
+                    <div class="card-header chat-header-border">
+                        <div class="bot-profile-group">
+                            <div class="bot-avatar-glow">AI</div>
+                            <div>
+                                <h2>Campus Concierge</h2>
+                                <p class="card-sub active-text">Online • Natural NLP Core</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-box custom-scrollbar" id="chat-box">
+                        <div class="msg-wrapper bot">
+                            <div class="avatar">AI</div>
+                            <div class="msg-bubble">
+                                <p class="msg-text">Welcome back. Matrix initialized. Ask me anything regarding exam logs, class attendance forecasting, or campus structures.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="Query campus digital core...">
+                        <button id="send-chat-btn" class="btn-round-submit">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
