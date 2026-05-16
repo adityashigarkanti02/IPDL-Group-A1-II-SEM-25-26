@@ -1,36 +1,32 @@
-# AI Assistant - Next-Gen Predictive Campus Core 🚀
+# SmartCampus AI: An Intelligent Platform for Student Services and Campus Management 🚀
 
-An elite, full-stack predictive campus workspace engine featuring a synchronized SQLite3 database ecosystem, real-time credit-weighted verification ledger, attendance forecasting simulator, and a contextual NLP chatbot assistant.
+An elite, full-stack campus operations workspace featuring a synchronized SQLite3 database ecosystem, real-time credit-weighted attendance forecasting simulator, grievance node tracking desk, and an intelligent NLP chatbot concierge.
 
 Built explicitly for the **Interdisciplinary Project-Based Learning (IPDL) Phase Evaluation (II Semester, 2025-2026)**.
 
 ---
 
-## 💎 Core Architecture Features
+## 💎 Core Platform Modules
 
-* **Student Passport Ledger:** Dynamic top-tier profile widget displaying custom identity hashes, stream metadata, and real-time CGPA metrics.
-* **Predictive Compliance Simulator:** Interactive forecasting engine running probability calculations to map safety thresholds or critical class milestones required to maintain academic compliance (75% eligibility flag).
-* **Attendance Tracking Matrix:** Dynamic UI tracking and serving localized academic status flags for the active engineering syllabus directory.
-* **Grievance Node Desk:** Fully integrated encrypted ticketing tracking gateway mapped directly to operational SQLite transaction nodes.
-* **NLP Workspace Concierge:** On-board asynchronous contextual chatbot engine processing local instruction protocols for academic, exam, and infrastructure support paths.
+* **Intelligent Student Passport:** Dynamic profile widget serving custom identity tracking hashes, stream streams, and real-time CGPA metrics dynamically fetched via secure SQL nodes.
+* **Predictive Attendance Simulator:** Advanced compliance forecasting engine executing recursive threshold paths to map exact class requirements to stay clear of academic eligibility flags (75%).
+* **Grievance Operations Desk:** Mapped tracking gateway processing encrypted infrastructure, academic, and hostel/mess support tickets.
+* **NLP Campus Concierge Node:** On-board asynchronous language parsing chatbot assistant managing immediate local answers for exam calendars and departmental regulations.
 
 ---
 
 ## 🛠️ Technology Stack Matrix
 
 * **Runtime Environment:** Node.js
-* **Backend Framework:** Express.js (Static asset routing middleware engine)
-* **Database Node:** SQLite3 (Persistent file-based file management query processor)
-* **UI System Framework:** Raw semantic HTML5, CSS3 Custom Variables, Glassmorphism UI Engine, and Vanilla JavaScript (ES6+ Architecture)
+* **Backend Framework:** Express.js (Static asset asset delivery middleware)
+* **Database Layer:** SQLite3 (Persistent file-based relational transaction management)
+* **UI Architecture:** Semantic HTML5, CSS3 Custom Properties, Glassmorphism Styling Layout, and Vanilla JavaScript (ES6+ Engine)
 
 ---
 
-## 🏃 Local Run & Initialization Guidelines
+## 🏃 Local Setup & Run Guidelines
 
-### 1. Verification of Prerequisites
-Ensure your host machine has [Node.js](https://nodejs.org/) installed globally.
-
-### 2. Dependency Infrastructure Provisioning
-Clone or navigate directly inside the directory file paths via your terminal environment, then provision the required packages:
+### 1. Provision Infrastructure
+Open your terminal environment inside the root directory and install dependencies:
 ```bash
 npm install express sqlite3
