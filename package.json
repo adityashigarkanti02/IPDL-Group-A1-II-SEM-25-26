@@ -1,18 +1,23 @@
 {
   "name": "smart-campus",
   "version": "1.0.0",
-  "description": "",
+  "description": "AI-Assisted Smart Campus Infrastructure & Management System",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "smart-campus",
+    "ai",
+    "attendance",
+    "complaint-management",
+    "civil-engineering",
+    "ipdl"
+  ],
+  "author": "Aditya S",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "express": "^5.2.1",
-    "sqlite3": "^5.1.7"
+    "express": "^5.2.1"
   }
 }

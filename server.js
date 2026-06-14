@@ -1,284 +1,169 @@
-const express = require('express');
-const path = require('path');
-const db = require('./database');
+const express = require("express");
+const path = require("path");
+
+const {
+    profile,
+    attendance,
+    complaints,
+    infrastructureReports
+} = require("./database");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 
-// =========================
-// PROFILE API
-// =========================
-app.get('/api/profile', (req, res) => {
+// =====================
+// PROFILE
+// =====================
 
-    db.get(
-        "SELECT * FROM student_profile LIMIT 1",
-        [],
-        (err, row) => {
-
-            if (err) {
-                return res.status(500).json({
-                    error: err.message
-                });
-            }
-
-            res.json(row);
-        }
-    );
-
+app.get("/api/profile", (req, res) => {
+    res.json(profile);
 });
 
 
-// =========================
-// ATTENDANCE API
-// =========================
-app.get('/api/attendance', (req, res) => {
+// =====================
+// ATTENDANCE
+// =====================
 
-    db.all(
-        "SELECT * FROM attendance",
-        [],
-        (err, rows) => {
-
-            if (err) {
-                return res.status(500).json({
-                    error: err.message
-                });
-            }
-
-            res.json(rows);
-        }
-    );
-
+app.get("/api/attendance", (req, res) => {
+    res.json(attendance);
 });
 
 
-// =========================
-// COMPLAINTS API
-// =========================
-app.get('/api/complaints', (req, res) => {
+// =====================
+// COMPLAINTS
+// =====================
 
-    db.all(
-        "SELECT * FROM complaints ORDER BY id DESC",
-        [],
-        (err, rows) => {
-
-            if (err) {
-                return res.status(500).json({
-                    error: err.message
-                });
-            }
-
-            res.json(rows);
-        }
-    );
-
+app.get("/api/complaints", (req, res) => {
+    res.json(complaints);
 });
 
+app.post("/api/complaints", (req, res) => {
 
-app.post('/api/complaints', (req, res) => {
+    const { category, description } = req.body;
 
-    const {
+    const complaint = {
+        id: complaints.length + 1,
         category,
-        description
-    } = req.body;
+        description,
+        status: "Pending"
+    };
 
-    db.run(
-        `
-        INSERT INTO complaints
-        (category, description)
-        VALUES (?, ?)
-        `,
-        [category, description],
-        function(err) {
+    complaints.unshift(complaint);
 
-            if (err) {
-                return res.status(500).json({
-                    error: err.message
-                });
-            }
-
-            res.json({
-                id: this.lastID,
-                category,
-                description,
-                status: 'Pending'
-            });
-        }
-    );
-
+    res.json(complaint);
 });
 
 
-// =========================
-// INFRASTRUCTURE API
-// =========================
-app.get('/api/infrastructure', (req, res) => {
+// =====================
+// INFRASTRUCTURE
+// =====================
 
-    db.all(
-        "SELECT * FROM infrastructure ORDER BY id DESC",
-        [],
-        (err, rows) => {
-
-            if (err) {
-                return res.status(500).json({
-                    error: err.message
-                });
-            }
-
-            res.json(rows);
-        }
-    );
-
+app.get("/api/infrastructure", (req, res) => {
+    res.json(infrastructureReports);
 });
 
-
-app.post('/api/infrastructure', (req, res) => {
+app.post("/api/infrastructure", (req, res) => {
 
     const {
-        issue_type,
+        issueType,
         location,
         severity,
         description
     } = req.body;
 
-    db.run(
-        `
-        INSERT INTO infrastructure
-        (
-            issue_type,
-            location,
-            severity,
-            description
-        )
-        VALUES (?, ?, ?, ?)
-        `,
-        [
-            issue_type,
-            location,
-            severity,
-            description
-        ],
-        function(err) {
+    const report = {
+        id: infrastructureReports.length + 1,
+        issueType,
+        location,
+        severity,
+        description
+    };
 
-            if (err) {
-                return res.status(500).json({
-                    error: err.message
-                });
-            }
+    infrastructureReports.unshift(report);
 
-            res.json({
-                success: true
-            });
-        }
-    );
-
+    res.json(report);
 });
 
 
-// =========================
-// AI CHATBOT API
-// =========================
-app.post('/api/chatbot', (req, res) => {
+// =====================
+// AI CHATBOT
+// =====================
 
-    const message =
-        req.body.message.toLowerCase();
+app.post("/api/chatbot", (req, res) => {
+
+    const message = req.body.message.toLowerCase();
 
     let response =
-        "Sorry, I don't understand. Try asking about exams, hostel, attendance, AI, Python, or infrastructure.";
+        "I can help with attendance, exams, complaints, infrastructure monitoring and SmartCampus services.";
 
     if (
-        message.includes('hello') ||
-        message.includes('hi')
+        message.includes("hello") ||
+        message.includes("hi")
     ) {
+
         response =
-            "👋 Hello! Welcome to Smart Campus Assistant.";
+            "👋 Welcome to SmartCampus AI. How can I assist you today?";
     }
 
     else if (
-        message.includes('exam')
+        message.includes("attendance")
     ) {
+
         response =
-            "📅 Mid-term examinations begin next month.";
+            "📊 Students must maintain at least 75% attendance for exam eligibility.";
     }
 
     else if (
-        message.includes('hostel')
+        message.includes("exam")
     ) {
+
         response =
-            "🏢 Hostel Office: Block A, Room 102.";
+            "📅 Examination schedules will be published through the student portal.";
     }
 
     else if (
-        message.includes('attendance')
+        message.includes("python")
     ) {
+
         response =
-            "📈 Minimum attendance required is 75%.";
+            "🐍 Python Programming Lab submissions are evaluated weekly.";
     }
 
     else if (
-        message.includes('python')
+        message.includes("ai")
     ) {
+
         response =
-            "🐍 Python Lab submissions are evaluated weekly.";
+            "🤖 AI & Applications covers Machine Learning, Neural Networks and Intelligent Systems.";
     }
 
     else if (
-        message.includes('ai')
+        message.includes("civil") ||
+        message.includes("infrastructure")
     ) {
-        response =
-            "🤖 AI study materials are available in the Digital Library.";
-    }
 
-    else if (
-        message.includes('crack') ||
-        message.includes('wall')
-    ) {
         response =
-            "🏗 Wall crack issues can be reported through Infrastructure Monitoring.";
-    }
-
-    else if (
-        message.includes('water') ||
-        message.includes('leakage')
-    ) {
-        response =
-            "💧 Water leakage issues should be reported immediately through the Infrastructure Portal.";
+            "🏗 Infrastructure Monitoring tracks wall cracks, water leakage, road damage and maintenance activities.";
     }
 
     res.json({
         reply: response
     });
-
 });
 
 
-// =========================
-// HOME PAGE
-// =========================
-app.get('/', (req, res) => {
-
-    res.sendFile(
-        path.join(
-            __dirname,
-            'public',
-            'index.html'
-        )
-    );
-
-});
-
-
-// =========================
+// =====================
 // START SERVER
-// =========================
+// =====================
+
 app.listen(PORT, () => {
 
     console.log(
-        `🚀 Server Running:
-http://localhost:${PORT}`
+        `🚀 SmartCampus AI running on http://localhost:${PORT}`
     );
 
 });
